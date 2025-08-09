@@ -1,3 +1,5 @@
+from relationship_app.models import Author, Book, Library, Librarian
+
 import django
 import os
 
@@ -5,14 +7,14 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LibraryProject.settings')
 django.setup()
 
-from relationship_app.models import Author, Book, Library, Librarian
+
 
 
 # 1. Query all books by a specific author
 def books_by_author(author_name):
     try:
         author = Author.objects.get(name = author_name)
-        books = Book.objects.filter(author__name=author_name)
+        books = Book.objects.filter(author=author)
         return books
     except Author.DoesNotExist:
         return []
