@@ -30,10 +30,10 @@ def books_in_library(library_name):
 
 
 # 3. Retrieve the librarian for a library
-def librarian_for_library(library_name):
+def librarian_for_library(librarian_name):
     try:
-        library = Library.objects.get(name=library_name)
-        return library.librarian  # Access via reverse OneToOne relationship
+        librarian = Librarian.objects.get(name=librarian_name)
+        return librarian  # Access via reverse OneToOne relationship
     except (Library.DoesNotExist, Librarian.DoesNotExist):
         return None
 
