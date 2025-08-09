@@ -17,7 +17,7 @@ Project_Root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(Project_Root)
 
 # Point to the settings module
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_models.django_models_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LibaryProject.settings')
 
 django.setup()
 

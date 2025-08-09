@@ -2,7 +2,7 @@ import django
 import os
 
 # Setup Django environment so we can use ORM
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_models.django_models_project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'LibraryProject.settings')
 django.setup()
 
 from relationship_app.models import Author, Book, Library, Librarian
@@ -10,8 +10,12 @@ from relationship_app.models import Author, Book, Library, Librarian
 
 # 1. Query all books by a specific author
 def books_by_author(author_name):
-    books = Book.objects.filter(author__name=author_name)
-    return books
+    try:
+        author = Author.objects.get(name = author_name)
+        books = Book.objects.filter(author__name=author_name)
+        return books
+    except Author.DoesNotExist:
+        return []
 
 
 # 2. List all books in a library
