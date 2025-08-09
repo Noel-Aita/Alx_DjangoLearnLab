@@ -21,6 +21,17 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+ class Meta:
+        # Add custom permissions here
+        permissions = [
+            ("can_add_book", "Can add a new book"),
+            ("can_change_book", "Can edit an existing book"),
+            ("can_delete_book", "Can delete a book"),
+        ]
+
+    def __str__(self):
+        return self.title
 
 
 # Library model
