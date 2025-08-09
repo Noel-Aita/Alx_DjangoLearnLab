@@ -22,6 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-y2i-4y4p&@ozu5zfi^2mqk$$+=z9+ag7=tgteduwvul$s0vtx5'
 
+LOGIN_REDIRECT_URL = '/relationship_app/books/'  # Or wherever you want users redirected after login
+LOGOUT_REDIRECT_URL = '/relationship_app/login/'  # Redirect after logout
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
