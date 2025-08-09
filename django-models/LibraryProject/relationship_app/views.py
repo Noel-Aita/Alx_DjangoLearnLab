@@ -14,6 +14,11 @@ from django.shortcuts import redirect, render
 
 
 
+@permission_required('bookshelf.view_book', raise_exception=True)
+def protected_books_view(request):
+    return HttpResponse("You have permission to view this page.")
+
+
 # ADD BOOK
 @permission_required('relationship_app.can_add_book')
 def add_book(request):
