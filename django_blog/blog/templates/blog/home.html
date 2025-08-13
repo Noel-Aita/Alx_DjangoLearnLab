@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Django Blog</title>
-</head>
-<body>
-     <h1>My Django Blog</h1>
-    {% for post in posts %}
-        <article>
-            <h2>
-                <a href="{% url 'post_detail' post.pk %}">{{ post.title }} </a>
-            </h2>
-            <p>{{ post.content }}</p>
-            <small>By {{ post.author.username }} on {{ post.published_date }}</small>
-        </article>
-        <hr>
-    {% empty %}
-        <p>No posts yet!</p>
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Home – Django Blog{% endblock %}
+{% block content %}
+  <h1>My Django Blog</h1>
+  {% for post in posts %}
+    <article>
+      <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+      <p>{{ post.content|truncatewords:40 }}</p>
+      <small>By {{ post.author.username }} on {{ post.published_date }}</small>
+    </article>
+    <hr>
+  {% empty %}
+    <p>No posts yet.</p>
+  {% endfor %}
+{% endblock %}
