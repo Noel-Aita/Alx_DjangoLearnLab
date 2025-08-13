@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm #UserUpdateForm,
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -39,7 +40,8 @@ def register(request):
 
 @login_required
 def profile(request):
-    if request.method == 'POST':
+    return render(request,'blog/profile.html')
+    ''' if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         # If you skipped Profile model, remove p_form & avatar handling
         p_form = ProfileUpdateForm(
@@ -57,10 +59,10 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=getattr(request.user, 'profile', None))
     return render(request, 'registration/profile.html', {'u_form': u_form, 'p_form': p_form})
+     '''
 
 # --- Post detail (from earlier step, if you added it) ---
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
-
