@@ -4,6 +4,18 @@
     <title>Django Blog</title>
 </head>
 <body>
-    <h1>Welcome to Django Blog!</h1>
+     <h1>My Django Blog</h1>
+    {% for post in posts %}
+        <article>
+            <h2>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }} </a>
+            </h2>
+            <p>{{ post.content }}</p>
+            <small>By {{ post.author.username }} on {{ post.published_date }}</small>
+        </article>
+        <hr>
+    {% empty %}
+        <p>No posts yet!</p>
+    {% endfor %}
 </body>
 </html>
