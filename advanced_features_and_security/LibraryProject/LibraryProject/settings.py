@@ -16,9 +16,9 @@ ALLOWED_HOSTS = ['yourdomain.com', 'localhost', '127.0.0.1']
 
 
 # Use the custom user model
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'bookshelf.CustomUser'
 
-CustomUser._meta.app_label = "bookshelf"
+
 
 
 # Cookies & HTTPS
