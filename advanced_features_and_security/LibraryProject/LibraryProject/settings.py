@@ -2,6 +2,8 @@
 import os
 from pathlib import Path
 
+from users.models import CustomUser
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,6 +17,8 @@ ALLOWED_HOSTS = ['yourdomain.com', 'localhost', '127.0.0.1']
 
 # Use the custom user model
 AUTH_USER_MODEL = 'users.CustomUser'
+
+CustomUser._meta.app_label = "bookshelf"
 
 
 # Cookies & HTTPS
